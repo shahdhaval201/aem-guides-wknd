@@ -165,34 +165,16 @@
                         </goals>
                         <configuration>
                             <rules>
+                            <!-- DEMO: Wrong Java version - requires 22 but Cloud Manager uses 21 -->
+                            <!-- Revert to [21,22) to fix -->
                             <requireJavaVersion>
-                                <version>[21,22)</version> <!-- Exactly Java 21 -->
-                                <message>Maven must be executed with Java 21.</message>
+                                <version>[22,23)</version>
+                                <message>Maven must be executed with Java 22. Cloud Manager uses Java 21 - this will fail in CI/CD. Fix: change to [21,22) for Java 21.</message>
                             </requireJavaVersion>
                             </rules>
                             <fail>true</fail>
                         </configuration>
         </execution>
-                    <!-- DEMO: Banned dependencies - fails if banned libs are used -->
-                    <execution>
-                        <id>enforce-banned-dependencies</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <bannedDependencies>
-                                    <excludes>
-                                        <!-- Banned: use SLF4J instead of commons-logging -->
-                                        <exclude>commons-logging:commons-logging</exclude>
-                                        <!-- Banned: use log4j2 or SLF4J instead of log4j 1.x -->
-                                        <exclude>log4j:log4j</exclude>
-                                    </excludes>
-                                    <message>Banned dependency detected. Use SLF4J for logging instead of commons-logging or log4j 1.x.</message>
-                                </bannedDependencies>
-                            </rules>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
             <!-- Maven Compiler Plugin -->

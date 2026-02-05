@@ -83,14 +83,7 @@ Import-Package: javax.annotation;version=0.0.0,*
         <dependency>
             <groupId>com.adobe.cq</groupId>
             <artifactId>core.wcm.components.core</artifactId>
-        </dependency>
-        <!-- DEMO: Banned dependency - Maven Enforcer will fail the build -->
-        <!-- Remove this block to fix. Use SLF4J (already in use) instead of commons-logging. -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
