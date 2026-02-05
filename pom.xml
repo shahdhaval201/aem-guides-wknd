@@ -172,7 +172,27 @@
                             </rules>
                             <fail>true</fail>
                         </configuration>
-        </execution>                    
+        </execution>
+                    <!-- DEMO: Banned dependencies - fails if banned libs are used -->
+                    <execution>
+                        <id>enforce-banned-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <excludes>
+                                        <!-- Banned: use SLF4J instead of commons-logging -->
+                                        <exclude>commons-logging:commons-logging</exclude>
+                                        <!-- Banned: use log4j2 or SLF4J instead of log4j 1.x -->
+                                        <exclude>log4j:log4j</exclude>
+                                    </excludes>
+                                    <message>Banned dependency detected. Use SLF4J for logging instead of commons-logging or log4j 1.x.</message>
+                                </bannedDependencies>
+                            </rules>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <!-- Maven Compiler Plugin -->
