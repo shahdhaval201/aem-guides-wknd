@@ -1,0 +1,49 @@
+ <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='wknd.site'}"/>
+<sly data-sly-call="${clientlib.js @ categories='wknd.site'}"/>
+ <sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.DistanceTravel"/>
+
+<sly data-sly-test="${!model.hideComponent}">
+<div class="distance-section">
+
+    <h2>${model.title}</h2>
+    <p>${model.description}</p>
+
+    <div class="distance-wrapper">
+
+        <!-- Left Card -->
+        <div class="card left">
+            <img src="${model.leftImage}" alt="left"/>
+            <h3>${model.leftTitle}</h3>
+        </div>
+
+        <!-- Center -->
+        <div class="center">
+            <h2>${model.distance}</h2>
+            <p>${model.travelTime}</p>
+        </div>
+
+        <!-- Right Card -->
+        <div class="card right">
+            <img src="${model.rightImage}" alt="right"/>
+            <h3>${model.rightTitle}</h3>
+        </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom-info">
+        <div>
+            <span>${model.bottomLeftLabel}</span>
+            <p>${model.bottomLeftValue}</p>
+        </div>
+
+        <div>
+            <span>${model.bottomRightLabel}</span>
+            <p>${model.bottomRightValue}</p>
+        </div>
+    </div>
+
+</div>
+</sly>

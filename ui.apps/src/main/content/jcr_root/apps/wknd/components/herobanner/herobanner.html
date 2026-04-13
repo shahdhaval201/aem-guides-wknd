@@ -1,0 +1,38 @@
+ <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"/>
+
+<sly data-sly-call="${clientlib.css @ categories='wknd.site'}"/>
+<sly data-sly-call="${clientlib.js @ categories='wknd.site'}"/>
+ <sly data-sly-use.hero="com.adobe.aem.guides.wknd.core.models.HeroBanner" />
+
+<sly data-sly-test="${!hero.hideComponent}">
+  <div
+    class="hero-banner"
+    style="background-image: url('${hero.image @ context='uri'}');"
+  >
+
+    <!-- Foreground Image (Tiger) -->
+    <div class="hero-foreground">
+      <img src="${hero.foregroundImage}" alt="Tiger" />
+    </div>
+
+    <div class="hero-content">
+
+      <p class="hero-subtitle">${hero.subtitle}</p>
+
+      <h1>${hero.title}</h1>
+
+      <p class="hero-description">${hero.description}</p>
+
+      <div class="hero-buttons">
+        <a href="${hero.buttonLink1}" class="btn btn-secondary">
+          ${hero.buttonText1}
+        </a>
+
+        <a href="${hero.buttonLink2}" class="btn btn-primary">
+          ${hero.buttonText2}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</sly>
